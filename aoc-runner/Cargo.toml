@@ -1,0 +1,9 @@
+[package]
+name = "aoc-runner"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+description.workspace = true
+
+[dependencies]
+2015 = { path = "../2015" }
