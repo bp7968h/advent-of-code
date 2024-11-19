@@ -21,7 +21,7 @@ fn main() {
                 "2015" => {
                     match day.as_str() {
                         "day1" => {
-                            aoc2015::day1::run(&puzzle_input);
+                            let _ = aoc2015::day1::run(&puzzle_input);
                         },
                         _ => {
                             eprintln!("Invalid day: {}", day);
