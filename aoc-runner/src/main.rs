@@ -1,4 +1,6 @@
-use std::{env, process};
+use std::{env, process, fs};
+
+use aoc2015;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -7,25 +9,33 @@ fn main() {
         3 => {
             let year = &args[1];
             let day = &args[2];
-            let path = format!("../inputs/aoc{}/{}", year, day);
+            let path = format!("../inputs/aoc{}/{}.txt", year, day);
+            let puzzle_input = if let Ok(content) = fs::read_to_string(&path) {
+                    content
+                } else {
+                    eprintln!("File `{}` not found.", &path);
+                    process::exit(1);
+            };
 
             match year.as_str() {
                 "2015" => {
                     match day.as_str() {
                         "day1" => {
-                            println!("2015 day1");
+                            aoc2015::day1::run(&puzzle_input);
                         },
                         _ => {
-                            println!("Invalid day: {}", day);
-                            println!("Advent of Code runs from day1 to day25");
+                            eprintln!("Invalid day: {}", day);
+                            eprintln!("Advent of Code runs from day1 to day25");
+                            process::exit(1);
                         }
                     }
                 },
                 _ => {
-                    println!("Invalid year: {}", year);
-                    println!("Advent of Code started from 2015 so,");
-                    println!("Use one of these year");
-                    println!("\t[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023]");
+                    eprintln!("Invalid year: {}", year);
+                    eprintln!("Advent of Code started from 2015 so,");
+                    eprintln!("Use one of these year");
+                    eprintln!("\t[2015, 2016, 2017, 2018, 2019, 2020, 2021, 2023]");
+                    process::exit(1);
                 }
             }
         },
