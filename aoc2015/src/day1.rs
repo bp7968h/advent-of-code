@@ -1,4 +1,4 @@
-pub fn run(input: &str) {
+pub fn run(input: &str) -> isize {
     let mut curr_pos: isize = 0;
     let mut has_entered_basement: bool = false;
 
@@ -16,4 +16,36 @@ pub fn run(input: &str) {
         }
     }
     println!("Final position: {}", curr_pos);
+    
+    position
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+            
+    #[test]
+    fn test_floor_0() {
+        assert_eq!(run("(())"), 0);
+        assert_eq!(run("()()"), 0);
+    }
+            
+    #[test]
+    fn test_floor_3() {
+        assert_eq!(run("((("), 3);
+        assert_eq!(run("(()(()("), 3);
+        assert_eq!(run("))((((("), 3);
+    }
+            
+    #[test]
+    fn test_floor_minus_1() {
+        assert_eq!(run("())"), -1);
+        assert_eq!(run("))("), -1);
+    }
+            
+    #[test]
+    fn test_floor_minus_3() {
+        assert_eq!(run(")))"), -3);
+        assert_eq!(run(")())())"), -3);
+    }
 }
