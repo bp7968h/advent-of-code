@@ -6,7 +6,7 @@ pub fn run(input: &str) -> isize {
         match c {
             '(' => curr_pos += 1,
             ')' => curr_pos -= 1,
-            _ => panic!("Invalid input"),
+            others => panic!("Invalid input: {}", others),
         }
 
         if !has_entered_basement && curr_pos == (-1 as isize) {
@@ -17,7 +17,7 @@ pub fn run(input: &str) -> isize {
     }
     println!("Final position: {}", curr_pos);
     
-    position
+    curr_pos
 }
 
 #[cfg(test)]
