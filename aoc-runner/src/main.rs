@@ -54,7 +54,19 @@ fn main() {
                             let secret: &'static str = "bgvyzdsv";
                             let _ = aoc2015::day4::run(secret, "00000");
                             let _ = aoc2015::day4::run(secret, "000000");
-                        }
+                        },
+                        "day5" => {
+                            match get_input_file(year, day) {
+                                Ok(puzzle_input) => {
+                                    let _ = aoc2015::day5::run_part1(&puzzle_input);
+                                    let _ = aoc2015::day5::run_part2(&puzzle_input);
+                                },
+                                Err(e) => {
+                                    eprintln!("Error: {}", e);
+                                    process::exit(1);
+                                }
+                            }
+                        },
                         _ => unreachable!()
                     }
                 },

@@ -26,6 +26,15 @@ You can use the `aoc-runner` crate to execute a specific challenge. The CLI expe
 cargo run --bin runner -- 2015 day1
 ```
 
+## Running Test
+
+Every challenge have unit tests written for them, so you can run all the tests from the workspace root as follow:
+
+```bash
+# Runs all the test for all the challenges
+cargo test
+```
+
 ## Input Files
 Input files for each day’s challenge are stored in the `inputs` directory, organized by year. This path is used by runner to provide the input to the puzzle based on the provided year and day.
 
