@@ -49,6 +49,11 @@ fn main() {
                                     process::exit(1);
                                 }
                             }
+                        },
+                        "day4" => {
+                            let secret: &'static str = "bgvyzdsv";
+                            let _ = aoc2015::day4::run(secret, "00000");
+                            let _ = aoc2015::day4::run(secret, "000000");
                         }
                         _ => unreachable!()
                     }
