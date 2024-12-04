@@ -2,7 +2,8 @@
 resolver = "2"
 members = [
     "aoc-runner",
-    "aoc2015",
+    "aoc2015", 
+    "aoc2024",
 ]
 exclude = ["inputs"]
 
