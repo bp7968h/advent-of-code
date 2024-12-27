@@ -1,6 +1,7 @@
 use std::{env, process};
 
 use aoc2015;
+use aoc2024;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -81,6 +82,22 @@ fn main() {
                         _ => unreachable!()
                     }
                 },
+                "2024" => {
+                    match day.as_str() {
+                        "day1" => {
+                            match get_input_file(year, day) {
+                                Ok(puzzle_input) => {
+                                    let _ = aoc2024::day1::run(&puzzle_input);
+                                },
+                                Err(e) => {
+                                    eprintln!("Error: {}", e);
+                                    process::exit(1);
+                                }
+                            }
+                        },
+                        _ => unreachable!()
+                    }
+                }
                 _ => unreachable!()
             }
         },
@@ -97,7 +114,7 @@ fn main() {
 }
 
 fn validate_year(year: &str) {
-    let valid_years = ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2023"];
+    let valid_years = ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2023", "2024"];
     if !valid_years.contains(&year) {
         eprintln!("Invalid year: {}", year);
         eprintln!("AoC started from 2015 till present. Use one of these year");

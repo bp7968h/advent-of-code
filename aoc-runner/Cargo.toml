@@ -7,3 +7,4 @@ description.workspace = true
 
 [dependencies]
 aoc2015 = { path = "../aoc2015" }
+aoc2024 = { path = "../aoc2024" }
