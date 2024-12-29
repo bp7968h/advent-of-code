@@ -4,19 +4,40 @@
 // if removing a single level from an unsafe report would make it safe, the report instead counts as safe.
 
 pub fn run(input: &str) {
-    let input: Vec<Vec<usize>> = input.lines().map(|l| {
+    let input: Vec<Vec<usize>> = parse_input(input);
+    
+    let part_one_ans = part_one_count(&input);
+    println!("Part one puzzle answer: {part_one_ans}");
+
+    let part_two_ans = part_two_count(&input);
+    println!("Part two puzzle answer: {part_two_ans}");
+}
+
+fn parse_input(input: &str) -> Vec<Vec<usize>> {
+    input.lines().map(|l| {
         l.split_whitespace()
         .filter_map(|i| i.parse::<usize>().ok())
         .collect()
-    }).collect();
-    
+    }).collect()
+}
+
+fn part_one_count(input: &Vec<Vec<usize>>) -> usize {
+    let mut safe_count: usize = 0;
+    for i in input.iter() {
+        if is_safe(&i) {
+            safe_count += 1;
+        }
+    }
+
+    safe_count
+}
+
+fn part_two_count(input: &Vec<Vec<usize>>) -> usize {
     let mut safe_count = 0;
     for i in input.iter() {
         if is_safe(&i) {
             safe_count += 1;
-            // println!("Safe: {:?} {}", i, position);
         } else {
-            // println!("Unsafe: {:?} {}", i, position);
             for j in 0..i.len() {
                 let mut temp = i.clone();
                 let _ = temp.remove(j);
@@ -28,8 +49,7 @@ pub fn run(input: &str) {
             }
         }
     }
-    
-    println!("Safe Count: {}", safe_count)
+    safe_count
 }
 
 fn is_safe(slice: &[usize]) -> bool {

@@ -95,6 +95,17 @@ fn main() {
                                 }
                             }
                         },
+                        "day2" => {
+                            match get_input_file(year, day) {
+                                Ok(puzzle_input) => {
+                                    let _ = aoc2024::day2::run(&puzzle_input);
+                                },
+                                Err(e) => {
+                                    eprintln!("Error: {}", e);
+                                    process::exit(1);
+                                }
+                            }
+                        },
                         _ => unreachable!()
                     }
                 }
