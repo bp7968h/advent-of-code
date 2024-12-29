@@ -88,3 +88,25 @@ fn is_safe(slice: &[usize]) -> bool {
     }
     true
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn from_example() {
+        let input: &str = r#"7 6 4 2 1
+1 2 7 8 9
+9 7 6 2 1
+1 3 2 4 5
+8 6 4 4 1
+1 3 6 7 9"#;
+        let parsed_input = parse_input(input);
+
+        let part_one_count = part_one_count(&parsed_input);
+        assert_eq!(part_one_count, 2);
+
+        let part_two_count = part_two_count(&parsed_input);
+        assert_eq!(part_two_count, 4);
+    }
+}
