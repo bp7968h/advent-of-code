@@ -158,3 +158,24 @@ fn part_two_multiplication(input: &str) -> usize {
 
     total
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn part_one_from_example() {
+        let input: &str = r#"xmul(2,4)%&mul[3,7]!@^do_not_mul(5,5)+mul(32,64]then(mul(11,8)mul(8,5))"#;
+
+        let answer = part_one_multiplication(input);
+        assert_eq!(answer, 161);
+    }
+
+    #[test]
+    fn part_two_from_example() {
+        let input: &str = r#"xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"#;
+
+        let answer = part_two_multiplication(input);
+        assert_eq!(answer, 48);
+    }
+}
