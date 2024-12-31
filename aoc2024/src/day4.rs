@@ -151,3 +151,31 @@ fn can_check_part2(direction: Direction, position: (usize, usize), x: &usize, y:
         Direction::Top => (x - (x - position.0)) >= 1,
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    const INPUT: &str = r#"MMMSXXMASM
+MSAMXMSMSA
+AMXSXMAAMM
+MSAMASMSMX
+XMASAMXAMM
+XXAMMXXAMA
+SMSMSASXSS
+SAXAMASAAA
+MAMMMXMMMM
+MXMXAXMASX
+"#;
+
+    #[test]
+    fn part_one_from_example() {
+        let answer = run_part1(INPUT);
+        assert_eq!(answer, 18);
+    }
+
+    #[test]
+    fn part_two_from_example() {
+        let answer = run_part2(INPUT);
+        assert_eq!(answer, 9);
+    }
+}
