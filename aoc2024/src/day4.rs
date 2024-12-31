@@ -1,3 +1,11 @@
+pub fn run(input: &str) {
+    let part_one_count = run_part1(input);
+    println!("Part one puzzle answer: {part_one_count}");
+
+    let part_two_count = run_part2(input);
+    println!("Part two puzzle answer: {part_two_count}");
+}
+
 enum Direction {
     Right,
     Bottom,
@@ -26,9 +34,9 @@ fn can_check_part1(direction: Direction, position: (usize, usize), x: &usize, y:
     }
 }
 
-fn run_part1(input: &str) {
+fn run_part1(input: &str) -> usize {
  let mut xmas_count = 0;
-    let formatted: Vec<Vec<char>> = INPUT.lines().map(|l| l.chars().collect()).collect();
+    let formatted: Vec<Vec<char>> = input.lines().map(|l| l.chars().collect()).collect();
     let x_len = formatted.len();
     for x_idx in 0..x_len {
         let y_len = formatted[x_idx].len();
@@ -100,13 +108,14 @@ fn run_part1(input: &str) {
             }
         }
     }
-    println!("{:?}", xmas_count); 
+    
+    xmas_count
 }
 
 
-fn run_part2(input: &str) {
+fn run_part2(input: &str) -> usize {
 let mut xmas_count = 0;
-    let formatted: Vec<Vec<char>> = INPUT.lines().map(|l| l.chars().collect()).collect();
+    let formatted: Vec<Vec<char>> = input.lines().map(|l| l.chars().collect()).collect();
     let x_len = formatted.len();
     for x_idx in 0..x_len {
         let y_len = formatted[x_idx].len();
@@ -117,11 +126,6 @@ let mut xmas_count = 0;
                     let bottom_check = can_check_part2("bottom".into(), (x_idx, y_idx), &x_len, &y_len);
                     let left_check = can_check_part2("left".into(), (x_idx, y_idx), &x_len, &y_len);
                     let top_check = can_check_part2("top".into(), (x_idx, y_idx), &x_len, &y_len);
-                    
-                    // top left = formatted[x_idx - 1][y_idx - 1] 
-                    // top right = formatted[x_idx - 1][y_idx + 1] 
-                    // bot left = formatted[x_idx + 1][y_idx - 1] 
-                    // bot right = formatted[x_idx + 1][y_idx + 1] 
                     
                     if  (top_check && left_check) && (top_check && right_check) && (right_check && bottom_check) && (bottom_check && left_check) {
                         if (formatted[x_idx - 1][y_idx - 1] == 'M' && formatted[x_idx + 1][y_idx + 1] == 'S') || (formatted[x_idx - 1][y_idx - 1] == 'S' && formatted[x_idx + 1][y_idx + 1] == 'M') {
@@ -135,7 +139,8 @@ let mut xmas_count = 0;
             }
         }
     }
-    println!("{:?}", xmas_count);
+   
+   xmas_count
 }
 
 fn can_check_part2(direction: Direction, position: (usize, usize), x: &usize, y: &usize) -> bool {
